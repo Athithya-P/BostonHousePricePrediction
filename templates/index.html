@@ -2,58 +2,161 @@
 <html>
 <head>
     <title>Boston Housing Price Prediction</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(90deg, #1f1c2c 10%, #6247aa 45%, #ff758c 90%);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 50%;
+            max-width: 600px;
+            background: linear-gradient(90deg, #1f1c2c 10%, #6247aa 45%, #ff758c 90%);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: white;
+            text-align: center;
+        }
+        form {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 16px;
+            width: 120px;
+            text-align: left;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            background: #f0f0f0;
+            color: black;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #ff758c;
+            outline: none;
+        }
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        input[type="submit"] {
+            background: linear-gradient(to right, #ff007f, #ff99cc);
+            color: white;
+            border: none;
+            padding: 14px;
+            margin-top: 20px;
+            cursor: pointer;
+            width: 50%;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(to right, #ff99cc, #ff007f);
+        }
+        h3 {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>Boston Housing Price Prediction</h2>
-    <form action="/predict" method="post">
 
-        <label>CRIM:</label><br>
-        <input type="text" name="CRIM"><br>
+    <div class="container">
+        <h2>Boston Housing Price Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label>CRIM:</label>
+                <input type="text" name="CRIM">
+            </div>
+            <div class="form-group">
+                <label>ZN:</label>
+                <input type="text" name="ZN">
+            </div>
+            <div class="form-group">
+                <label>INDUS:</label>
+                <input type="text" name="INDUS">
+            </div>
+            <div class="form-group">
+                <label>CHAS:</label>
+                <input type="text" name="CHAS">
+            </div>
+            <div class="form-group">
+                <label>NOX:</label>
+                <input type="text" name="NOX">
+            </div>
+            <div class="form-group">
+                <label>RM:</label>
+                <input type="text" name="RM">
+            </div>
+            <div class="form-group">
+                <label>AGE:</label>
+                <input type="text" name="AGE">
+            </div>
+            <div class="form-group">
+                <label>DIS:</label>
+                <input type="text" name="DIS">
+            </div>
+            <div class="form-group">
+                <label>RAD:</label>
+                <input type="text" name="RAD">
+            </div>
+            <div class="form-group">
+                <label>TAX:</label>
+                <input type="text" name="TAX">
+            </div>
+            <div class="form-group">
+                <label>PTRATIO:</label>
+                <input type="text" name="PTRATIO">
+            </div>
+            <div class="form-group">
+                <label>B:</label>
+                <input type="text" name="B">
+            </div>
+            <div class="form-group">
+                <label>LSTAT:</label>
+                <input type="text" name="LSTAT">
+            </div>
+            <div class="submit-container">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
 
-        <label>ZN:</label><br>
-        <input type="text" name="ZN"><br>
-
-        <label>INDUS:</label><br>
-        <input type="text" name="INDUS"><br>
-
-        <label>CHAS:</label><br>
-        <input type="text" name="CHAS"><br>
-
-        <label>NOX:</label><br>
-        <input type="text" name="NOX"><br>
-
-        <label>RM:</label><br>
-        <input type="text" name="RM"><br>
-
-        <label>AGE:</label><br>
-        <input type="text" name="AGE"><br>
-
-        <label>DIS:</label><br>
-        <input type="text" name="DIS"><br>
-
-        <label>RAD:</label><br>
-        <input type="text" name="RAD"><br>
-
-        <label>TAX:</label><br>
-        <input type="text" name="TAX"><br>
-
-        <label>PTRATIO:</label><br>
-        <input type="text" name="PTRATIO"><br>
-
-        <label>B:</label><br>
-        <input type="text" name="B"><br>
-
-        <label>LSTAT:</label><br>
-        <input type="text" name="LSTAT"><br>
-
-        <br>
-        <input type="submit" value="Predict">
-
-    </form>
-
-    {% if prediction_text %}
-        <h3>{{ prediction_text }}</h3>
-    {% endif %}
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
 
 </body>
 </html>
